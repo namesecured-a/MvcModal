@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -10,7 +11,7 @@ namespace MvcModal.Controllers
 {
     public class UserController : Controller
     {
-        private MvcModalDbContext databaseContext = new MvcModalDbContext();
+        private readonly MvcModalDbContext databaseContext = new MvcModalDbContext();
 
         public ActionResult Index()
         {
@@ -20,6 +21,14 @@ namespace MvcModal.Controllers
         public ActionResult Create(int? id)
         {
             return this.PartialView("_Create");
+        }
+
+        [HttpPost]
+        public ActionResult Create(User user)
+        {
+            this.databaseContext.Users.AddOrUpdate(u => u.Id, new User { Name = user.Name, Email = user.Email });
+            this.databaseContext.Commit();
+            return this.PartialView("_List", this.databaseContext.Users);
         }
     }
 }

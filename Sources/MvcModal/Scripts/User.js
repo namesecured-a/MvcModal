@@ -5,6 +5,13 @@ MvcModal.User = MvcModal.User || (function () {
 
         var onCreateUserClicked = function(e, url) {
             e.preventDefault();
+
+            $(params.createUserDialogSelector).on('loaded.bs.modal', function() {
+                $(params.submitButtonSelector).on('click', function() {
+                    $(params.createUserDialogSelector).modal('hide');
+                });
+            });
+
             $(params.createUserDialogSelector).modal({
                 remote: params.createUserDialogContentUrl
             });
