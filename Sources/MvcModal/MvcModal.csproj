@@ -157,6 +157,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <Content Include="Scripts\typings\jquery\jquery.d.ts" />
+    <Content Include="Scripts\User.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -175,7 +176,7 @@
     <Content Include="Scripts\jquery-2.1.0.min.map" />
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\_List.cshtml" />
-    <Content Include="Views\User\_CreateModal.cshtml" />
+    <Content Include="Views\User\_Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

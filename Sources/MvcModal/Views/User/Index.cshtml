@@ -4,19 +4,38 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section scripts{
 
+@section scripts{
+    <script src="@Url.Content("~/Scripts/User.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var createUserParams = {
+                createUserButtonSelector: '.createDialog',
+                createUserModalSelector: '#modal-user-create',
+                createUserModalContentUrl: '@Url.Action("Create", "User")'
+            };
+
+            var parameters = {
+                createUserParams: createUserParams
+            };
+
+            var userHandler = new MvcModal.User.Handler(parameters);
+            userHandler.initialize();
+        });
+    </script>
 }
 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", new { @class = "createDialog", data_toggle="modal", data_target="#myModal"})
+    @Html.ActionLink("Create New", "Create", null, new { @class = "createDialog" })
 </p>
 
-<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-    Launch demo modal
-</button>
-
 @Html.Partial("_List", Model)
-@Html.Partial("_CreateModal")
+
+<div class="modal fade" id="modal-user-create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>

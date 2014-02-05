@@ -16,5 +16,10 @@ namespace MvcModal.Controllers
         {
             return View(this.databaseContext.Users);
         }
+
+        public ActionResult Create(int? id)
+        {
+            return this.PartialView("_Create");
+        }
     }
 }
