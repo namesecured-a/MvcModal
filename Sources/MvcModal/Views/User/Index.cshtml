@@ -11,8 +11,8 @@
         $(document).ready(function () {
             var createUserParams = {
                 createUserButtonSelector: '.createDialog',
-                createUserModalSelector: '#modal-user-create',
-                createUserModalContentUrl: '@Url.Action("Create", "User")'
+                createUserDialogSelector: '#dialog-user-create',
+                createUserDialogContentUrl: '@Url.Action("Create", "User")'
             };
 
             var parameters = {
@@ -33,7 +33,7 @@
 
 @Html.Partial("_List", Model)
 
-<div class="modal fade" id="modal-user-create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="dialog-user-create" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         </div>
