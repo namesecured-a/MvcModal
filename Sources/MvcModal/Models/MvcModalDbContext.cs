@@ -6,13 +6,14 @@ using System.Web;
 
 namespace MvcModal.Models
 {
-    public class MvcModelDbContext : DbContext
+    public class MvcModalDbContext : DbContext
     {
-        private const string ConnectionStringName = "MvcModelContext";
+        private const string ConnectionStringName = "MvcModalContext";
 
-        public MvcModelDbContext()
+        public MvcModalDbContext()
             : base(ConnectionStringName)
         {
+            this.Configuration.ProxyCreationEnabled = false;
         }
 
         public IDbSet<User> Users { get; set; }
