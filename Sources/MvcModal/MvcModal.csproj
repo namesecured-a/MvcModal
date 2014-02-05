@@ -126,6 +126,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Databaseinitializer.cs" />
+    <Compile Include="Models\DatabaseInitializerConfiguration.cs" />
     <Compile Include="Models\MvcModalDbContext.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

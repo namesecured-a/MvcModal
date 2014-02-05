@@ -10,7 +10,7 @@ namespace MvcModal.Models
     {
         public static void Initialize()
         {
-            Database.SetInitializer<MvcModalDbContext>(new CreateDatabaseIfNotExists<MvcModalDbContext>());
+            Database.SetInitializer(new DatabaseInitializerConfiguration());
 
             using (var context = new MvcModalDbContext())
             {
