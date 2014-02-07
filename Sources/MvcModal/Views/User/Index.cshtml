@@ -10,10 +10,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var createUserParams = {
-                createUserButtonSelector: '.createDialog',
-                createUserDialogSelector: '#dialog-user-create',
+                createButtonSelector: '.createDialog',
+                dialogFormSelector: '#dialog-user-create',
                 submitButtonSelector: '#btnSave',
-                createUserDialogContentUrl: '@Url.Action("Create", "User")'
+                dialogContentUri: '@Url.Action("Create", "User")'
             };
 
             var parameters = {

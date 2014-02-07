@@ -6,14 +6,14 @@ MvcModal.User = MvcModal.User || (function () {
         var onCreateUserClicked = function(e, url) {
             e.preventDefault();
 
-            $(params.createUserDialogSelector).on('loaded.bs.modal', function() {
+            $(params.dialogFormSelector).on('loaded.bs.modal', function() {
                 $(params.submitButtonSelector).on('click', function() {
-                    $(params.createUserDialogSelector).modal('hide');
+                    $(params.dialogFormSelector).modal('hide');
                 });
             });
 
-            $(params.createUserDialogSelector).modal({
-                remote: params.createUserDialogContentUrl
+            $(params.dialogFormSelector).modal({
+                remote: params.dialogContentUri
             });
         };
 
@@ -22,7 +22,7 @@ MvcModal.User = MvcModal.User || (function () {
         };
 
         var subscribeHandlers = function() {
-            $(params.createUserButtonSelector).on('click', function (e) {
+            $(params.createButtonSelector).on('click', function (e) {
                 var url = $(this).attr('href');
                 onCreateUserClicked(e, url);
                 return false;
