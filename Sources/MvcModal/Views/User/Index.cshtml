@@ -9,6 +9,9 @@
     <script src="@Url.Content("~/Scripts/User.js")" type="text/javascript"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
+            $.ajaxSetup({ cache: false });
+
             var createUserParams = {
                 createButtonSelector: '.createDialog',
                 dialogFormSelector: '#dialog-user-create',
