@@ -8,6 +8,7 @@
 @section scripts{
     <script src="@Url.Content("~/Scripts/Album.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/Album.Create.js")" type="text/javascript"></script>
+
     <script type="text/javascript">
         $(function() {
 
@@ -17,9 +18,9 @@
                     url: '@Url.Action("Create", "Album")',
                 },
                 button: {
-                    create: '',
-                    submit: '',
-                    cancel: ''
+                    create: '.createDialog',
+                    submit: '#btnSubmit',
+                    cancel: '#btnCancel'
                 }
             };
 

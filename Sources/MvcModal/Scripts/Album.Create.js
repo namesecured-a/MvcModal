@@ -1,15 +1,32 @@
 ﻿MvcModal = window.MvcModal || {};
 MvcModal.Album.Create = MvcModal.Album.Create || (function () {
+    var dialog = function(parameters) {
+        var params = parameters;
+
+        var show = function() {
+            alert('create user dialog');
+        };
+
+        var hide = function() {
+            
+        };
+
+        return {
+            show: show,
+            hide: hide
+        };
+    };
+
     var handler = function(parameters) {
         var params = parameters;
-        var dialog = null;
+        var modal = null;
 
         var init = function () {
             $(params.button.create).on('click', function(e) {
                 e.preventDefault();
 
-                dialog = new MvcModal.Album.Create.Dialog(params);
-                dialog.show();
+                modal = new dialog(params);
+                modal.show();
 
                 return;
             });
@@ -17,8 +34,8 @@ MvcModal.Album.Create = MvcModal.Album.Create || (function () {
 
         var free = function() {
             if (dialog !== null) {
-                dialog.hide();
-                dialog = null;
+                modal.hide();
+                modal = null;
             }
         };
 
