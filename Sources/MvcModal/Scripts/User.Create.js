@@ -53,7 +53,7 @@ MvcModal.User.Create = MvcModal.User.Create || (function () {
 
         return {
             initialize: initialize,
-            dispose: dispose
+            free: dispose
         };
     };
 

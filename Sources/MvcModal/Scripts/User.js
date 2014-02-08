@@ -27,13 +27,13 @@ MvcModal.User = MvcModal.User || (function () {
         var dispose = function() {
             unsubscribeHandlers();
             if (createUserHandler !== null) {
-                createUserHandler.dispose();
+                createUserHandler.free();
             }
         };
 
         return {
             initialize: initialize,
-            dispose: dispose
+            free: dispose
         };
     };
 

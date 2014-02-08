@@ -119,12 +119,14 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DatabaseinitializerConfiguration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Album.cs" />
     <Compile Include="Models\Databaseinitializer.cs" />
     <Compile Include="Models\DatabaseInitializerConfiguration.cs" />
     <Compile Include="Models\MvcModalDbContext.cs" />
@@ -146,6 +148,8 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
+    <Content Include="Scripts\Album.Create.js" />
+    <Content Include="Scripts\Album.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
@@ -178,6 +182,8 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\User\_List.cshtml" />
     <Content Include="Views\User\_Create.cshtml" />
+    <Content Include="Views\Album\Index.cshtml" />
+    <Content Include="Views\Album\_List.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

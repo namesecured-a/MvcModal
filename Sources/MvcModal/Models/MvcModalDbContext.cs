@@ -18,6 +18,8 @@ namespace MvcModal.Models
 
         public IDbSet<User> Users { get; set; }
 
+        public IDbSet<Album> Albums { get; set; }
+
         public virtual void Commit()
         {
             this.SaveChanges();
