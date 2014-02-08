@@ -1,9 +1,8 @@
 ﻿@model MvcModal.Models.Album
+
+@Html.ValidationSummary(excludePropertyErrors: true)
        
-@using (Ajax.BeginForm("Create", "Album", new AjaxOptions { HttpMethod = "POST" }))
-{
-    @Html.EditorForModel();
-    
-    <input type="submit" value="Create" id="btnSubmit" name="cmd" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" />
-    <input type="button" value="Cancel" id="btnCancel" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" />
-}
+@Html.EditorForModel()
+
+<input type="submit" value="Create" id="btnSubmit" name="cmd" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" />
+<input type="button" value="Cancel" id="btnCancel" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" />

@@ -14,7 +14,7 @@ namespace MvcModal.Models
 
             using (var context = new MvcModalDbContext())
             {
-                context.Database.Initialize(force: true);
+                context.Database.Initialize(force: false);
             }
         }
     }

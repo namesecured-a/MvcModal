@@ -18,9 +18,10 @@
                 dialog: {
                     id: 'div#dialog-create-album',
                     url: '@Url.Action("Create", "Album")',
+                    list: 'div#albumsList'
                 },
                 button: {
-                    create: '.createDialog',
+                    create: '#btnCreate',
                     submit: '#btnSubmit',
                     cancel: '#btnCancel'
                 }
@@ -39,12 +40,10 @@
 <h2>Albums</h2>
 
 <p>
-    @Html.ActionLink("Create new", "Create", null, new { @class = "createDialog" })
+    @Html.ActionLink("Create new", "Create", null, new { @id = "btnCreate" })
 </p>
 
-@{
-    Html.Partial("_List", Model);
-}
+@Html.Partial("_List", Model)
 
 <div id="dialog-create-album" style="display: none">
 </div>

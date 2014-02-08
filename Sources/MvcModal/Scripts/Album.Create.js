@@ -1,38 +1,53 @@
 ﻿MvcModal = window.MvcModal || {};
 MvcModal.Album.Create = MvcModal.Album.Create || (function () {
-    var album = function (parameters) {
-        var params = parameters;
-
-        var submit = function() {
-            return {
-                success: false,
-                html: '<p>Completed</p>'
-            };
-        };
-
-        return {
-            submit: submit
-        };
-    };
-
     var dialog = function (parameters) {
         var self = this;
         var params = parameters;
 
+        this.instance = null;
+        this.submitEx = null;
+
         this.onLoad = function (e) {
-            $(params.button.submit).on('click', self.onSubmit);
+            $(params.button.submit).on('click', self.onSubmitClicked);
             $(params.button.cancel).on('click', self.onCancel);
         };
 
-        this.onSubmit = function (e) {
-            e.preventDefault();
-            var a = new album(params);
-            var submit = a.submit();
-            if (submit.success) {
-                $(params.dialog.id).dialog('close');
+        this.onSubmitCompleted = function(data, status, xhr) {
+            if (!data.success) {
+                $(params.dialog.id).html(data.html);
+                self.onLoad();
             } else {
-                $(params.dialog.id).html(submit.html);
+                $(params.dialog.list).html(data.html);
+                $(params.dialog.id).dialog('close');
             }
+        };
+
+        this.onSubmitError = function(req) {
+
+        };
+
+        this.submit = function (instance) {
+            var json = JSON.stringify(instance);
+            $.ajax({
+                type: 'POST',
+                url: params.dialog.url,
+                datatype: 'json',
+                contentType: 'application/json: charset=utf-8',
+                data: json,
+                success: self.onSubmitCompleted,
+                error: self.onSubmitError
+            });
+        };
+
+        this.onSubmitClicked = function (e) {
+            e.preventDefault();
+
+            var instance = {
+                Id: 0,
+                Artist: 'Long name',
+                Genre: 'Chillout'
+            };
+            self.submit(instance);
 
             return false;
         };
@@ -56,7 +71,7 @@ MvcModal.Album.Create = MvcModal.Album.Create || (function () {
             $(params.dialog.id).dialog({
                 title: 'Create Album',
                 autoOpen: false,
-                resizable: false,
+                resizable: true,
                 modal: true,
                 draggable: false,
                 open: self.onOpen,
@@ -75,12 +90,12 @@ MvcModal.Album.Create = MvcModal.Album.Create || (function () {
         var params = parameters;
         var modal = null;
 
-        var init = function () {
+        var init = function (delegates) {
             $(params.button.create).on('click', function(e) {
                 e.preventDefault();
 
                 modal = new dialog(params);
-                modal.show();
+                modal.show(delegates);
 
                 return false;
             });

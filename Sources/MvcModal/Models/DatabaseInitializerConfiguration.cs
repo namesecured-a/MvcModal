@@ -3,7 +3,7 @@ using System.Data.Entity.Migrations;
 
 namespace MvcModal.Models
 {
-    internal sealed class DatabaseInitializerConfiguration : DropCreateDatabaseAlways<MvcModalDbContext>
+    internal sealed class DatabaseInitializerConfiguration : CreateDatabaseIfNotExists<MvcModalDbContext>
     {
         protected override void Seed(MvcModalDbContext context)
         {
