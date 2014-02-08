@@ -20,11 +20,17 @@ namespace MvcModal
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/unobtrusive").Include("~/Scripts/jquery.unobtrusive-ajax.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include("~/Scripts/jquery-ui-1.10.4.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-            bundles.Add(new ScriptBundle("~/bundles/unobtrusive").Include("~/Scripts/jquery.unobtrusive-ajax.js"));
+            bundles.Add(new StyleBundle("~/Content/jqueryui").Include(
+                "~/Content/themes/base/minified/jquery-ui.min.css"));
+            
         }
     }
 }
