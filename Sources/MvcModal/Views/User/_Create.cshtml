@@ -2,7 +2,7 @@
 
 @using (Ajax.BeginForm("Create", "User", new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "usersList" }))
 {
-    @Html.ValidationSummary(excludePropertyErrors: true)
+    @Html.ValidationSummary()
 
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

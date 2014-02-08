@@ -157,6 +157,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\typings\bootstrap\bootstrap.d.ts" />
     <Content Include="Scripts\typings\jquery\jquery.d.ts" />
+    <Content Include="Scripts\User.Create.js" />
     <Content Include="Scripts\User.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />

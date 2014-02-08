@@ -1,49 +1,43 @@
 ﻿MvcModal = window.MvcModal || {};
 MvcModal.User = MvcModal.User || (function () {
-    var userHandler = function (parameters) {
+    var handler = function (parameters) {
+        var createUserParams = parameters.createUserParams;
         var params = parameters.createUserParams;
-
-        var onCreateUserClicked = function(e, url) {
-            e.preventDefault();
-
-            $(params.dialogFormSelector).on('loaded.bs.modal', function() {
-                $(params.submitButtonSelector).on('click', function () {
-                    $(params.dialogFormSelector).modal('hide');
-                });
-            });
-
-            // Twitter bootstrap remote modal shows same content everytime
-            // http://stackoverflow.com/questions/12286332/twitter-bootstrap-remote-modal-shows-same-content-everytime
-            $(params.dialogFormSelector).on('hidden.bs.modal', function () {
-                $(this).removeData('bs.modal');
-            });
-
-            $(params.dialogFormSelector).modal({
-                remote: params.dialogContentUri
-            });
-        };
-
-        var unsubscribeHandlers = function() {
-
-        };
-
+        var createUserHandler = null;
+        
         var subscribeHandlers = function() {
             $(params.createButtonSelector).on('click', function (e) {
-                var url = $(this).attr('href');
-                onCreateUserClicked(e, url);
+                e.preventDefault();
+
+                createUserHandler = new MvcModal.User.Create.Handler(createUserParams);
+                createUserHandler.initialize();
                 return false;
             });
         };
 
-        return {
-            initialize: function () {
-                unsubscribeHandlers();
-                subscribeHandlers();
+        var unsubscribeHandlers = function () {
+            $(params.createButtonSelector).off('click');
+        };
+
+        var initialize = function() {
+            unsubscribeHandlers();
+            subscribeHandlers();
+        };
+
+        var dispose = function() {
+            unsubscribeHandlers();
+            if (createUserHandler !== null) {
+                createUserHandler.dispose();
             }
+        };
+
+        return {
+            initialize: initialize,
+            dispose: dispose
         };
     };
 
     return {
-        Handler: userHandler
+        Handler: handler,
     };
 })();

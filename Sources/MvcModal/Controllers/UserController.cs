@@ -26,9 +26,14 @@ namespace MvcModal.Controllers
         [HttpPost]
         public ActionResult Create(User user)
         {
-            this.databaseContext.Users.AddOrUpdate(u => u.Id, new User { Name = user.Name, Email = user.Email });
-            this.databaseContext.Commit();
-            return this.PartialView("_List", this.databaseContext.Users);
+            if (this.ModelState.IsValid)
+            {
+                this.databaseContext.Users.AddOrUpdate(u => u.Id, new User { Name = user.Name, Email = user.Email });
+                this.databaseContext.Commit();
+                return this.PartialView("_List", this.databaseContext.Users);    
+            }
+
+            return this.PartialView("_Create");
         }
     }
 }
