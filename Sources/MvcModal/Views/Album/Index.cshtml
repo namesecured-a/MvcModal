@@ -6,17 +6,18 @@
 }
 
 @section scripts{
+    <script src="@Url.Content("~/Scripts/Entity.Create.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/Album.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/Album.Create.js")" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(function () {
-
             $.ajaxSetup({ cache: false });
 
-            var create = {
+            var createParams = {
                 dialog: {
                     id: 'div#dialog-create-album',
+                    title: 'Create album',
                     url: '@Url.Action("Create", "Album")',
                     list: 'div#albumsList'
                 },
@@ -27,12 +28,9 @@
                 }
             };
 
-            var parameters = {
-                create: create
-            };
-
-            var albumHandler = new MvcModal.Album.Handler(parameters);
-            albumHandler.init();
+            MvcModal.Album.Initialize({
+                create: createParams
+            });
         });
     </script>
 }
