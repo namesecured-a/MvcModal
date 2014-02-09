@@ -9,6 +9,7 @@ MvcModal.Entity.Create = MvcModal.Entity.Create || (function () {
         var self = this;
         var params = parameters;
         this.getInstance = params.delegate.getInstance;
+        this.submit = params.delegate.submit;
 
         this.onLoad = function (e) {
             $(params.button.submit).on('click', self.onSubmitClicked);
@@ -20,7 +21,7 @@ MvcModal.Entity.Create = MvcModal.Entity.Create || (function () {
                 $(params.dialog.id).html(data.html);
                 self.onLoad();
             } else {
-                $(params.dialog.list).html(data.html);
+                $(params.dialog.updateId).html(data.html);
                 $(params.dialog.id).dialog('close');
             }
         };
@@ -28,25 +29,19 @@ MvcModal.Entity.Create = MvcModal.Entity.Create || (function () {
         this.onSubmitError = function(req) {
 
         };
+        
 
-        this.submit = function (instance) {
-            var json = JSON.stringify(instance);
-            $.ajax({
-                type: 'POST',
-                url: params.dialog.url,
-                datatype: 'json',
-                contentType: 'application/json: charset=utf-8',
-                data: json,
-                success: self.onSubmitCompleted,
-                error: self.onSubmitError
-            });
-        };
-
-        this.onSubmitClicked = function (e) {
+        this.onSubmitClicked = function(e) {
             e.preventDefault();
 
             var instance = self.getInstance(params);
-            self.submit(instance);
+
+            self.submit({
+                url: params.dialog.url,
+                instance: instance,
+                success: self.onSubmitCompleted,
+                error: self.onSubmitError
+            });
 
             return false;
         };
