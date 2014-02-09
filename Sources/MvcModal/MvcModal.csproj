@@ -212,7 +212,6 @@
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\Album.Create.js" />
     <Content Include="Scripts\Entity.Create.js" />
-    <Content Include="Scripts\Album.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
@@ -253,6 +252,7 @@
     <Content Include="Views\Album\Index.cshtml" />
     <Content Include="Views\Album\_List.cshtml" />
     <Content Include="Views\Album\_CreateDialog.cshtml" />
+    <Content Include="Views\Album\_CreateDialogScript.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
