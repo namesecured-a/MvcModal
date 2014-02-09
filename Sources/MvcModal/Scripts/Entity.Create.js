@@ -23,7 +23,7 @@ MvcModal.Entity.Create.Dialog = function (parameters) {
 
     this.show = function () {
         $(params.dialog.id).dialog({
-            title: 'Create Album',
+            title: params.dialog.title,
             autoOpen: false,
             resizable: true,
             modal: true,
