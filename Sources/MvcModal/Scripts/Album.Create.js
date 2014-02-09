@@ -14,11 +14,9 @@ MvcModal.Album.Create = MvcModal.Album.Create || (function () {
         return instance;
     };
 
-    var handler = function(parameters) {
-        var createHandler = new MvcModal.Entity.Create.Handler({
-            parameters: parameters,
-            getInstance: self.getInstance
-        });
+    var handler = function (parameters) {
+        parameters.delegate.getInstance = self.getInstance;
+        var createHandler = new MvcModal.Entity.Create.Handler(parameters);
         createHandler.init();
     };
 

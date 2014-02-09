@@ -7,9 +7,8 @@ MvcModal.Entity = MvcModal.Entity || (function() {
 MvcModal.Entity.Create = MvcModal.Entity.Create || (function () {
     var dialog = function (parameters) {
         var self = this;
-
-        var params = parameters.parameters;
-        this.getInstance = parameters.getInstance;
+        var params = parameters;
+        this.getInstance = params.delegate.getInstance;
 
         this.onLoad = function (e) {
             $(params.button.submit).on('click', self.onSubmitClicked);
@@ -86,12 +85,12 @@ MvcModal.Entity.Create = MvcModal.Entity.Create || (function () {
         };
     };
 
-    var handler = function(parameters) {
+    var handler = function (parameters) {
         var params = parameters;
         var modal = null;
 
         var init = function () {
-            $(params.button.create).on('click', function(e) {
+            $(params.button.create).on('click', function (e) {
                 e.preventDefault();
 
                 modal = new dialog(params);
